@@ -1,0 +1,50 @@
+.box {
+  border: 2px solid black;
+  height: 100px;
+  width: 100px;
+  margin: 2px;
+  background-color: beige;
+}
+
+.container {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.relative {
+  position: relative;
+}
+
+.left-100 {
+  left: 100px;
+}
+
+.left-half {
+  left: 50%;
+}
+
+.bottom-50 {
+  bottom: 50px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-right-corner {
+  top: 10px;
+  right: 10px;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.bottom-right-corner {
+  bottom: 10px;
+  right: 10px;
+}
+
+.sticky {
+  position: sticky;
+}
