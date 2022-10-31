@@ -50,7 +50,7 @@ class Books extends Component {
     // Axios.method(URL, options): promise
     this.props.setSearchParams(this.state.searchParams);
     // console.log(this.props.location.search);
-    const url = "http://localhost:8080/api/v1/books?page=1&limit=10";
+    const url = `${process.env.REACT_APP_BACKEND_HOST}api/v1/books?page=1&limit=10`;
     Axios.get(url)
       .then((res) => {
         this.setState({
