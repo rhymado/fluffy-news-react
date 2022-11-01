@@ -15,6 +15,7 @@ import withNavigate from "../helpers/withNavigate";
 class Private extends Component {
   componentDidMount() {
     const isLogin = localStorage.getItem("isLogin");
+    console.log(isLogin);
     if (!isLogin) this.props.navigate("/register");
   }
   render() {
