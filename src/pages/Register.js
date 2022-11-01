@@ -12,6 +12,11 @@ class Register extends Component {
   state = {
     isPwdShown: false,
   };
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log("login");
+    localStorage.setItem("isLogin", true);
+  };
   render() {
     return (
       <>
@@ -54,7 +59,11 @@ class Register extends Component {
                   <label>Phone Number:</label>
                   <input type="tel" placeholder="Enter your phone number" />
                 </div>
-                <Button text="Sign Up" variant="primary" />
+                <Button
+                  text="Sign Up"
+                  variant="primary"
+                  onClick={this.onSubmit}
+                />
               </form>
             </section>
             <section
