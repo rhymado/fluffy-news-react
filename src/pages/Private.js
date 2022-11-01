@@ -10,17 +10,22 @@
 //   return <div>Private</div>;
 // }
 import React, { Component } from "react";
-import withNavigate from "../helpers/withNavigate";
+// import withNavigate from "../helpers/withNavigate";
+import { Navigate } from "react-router-dom";
 
 class Private extends Component {
-  componentDidMount() {
-    const isLogin = localStorage.getItem("isLogin");
-    console.log(isLogin);
-    if (!isLogin) this.props.navigate("/register");
-  }
+  state = {
+    isLogin: localStorage.getItem("isLogin"),
+  };
+  componentDidMount() {}
   render() {
+    // const isLogin = localStorage.getItem("isLogin");
+    console.log(this.state.isLogin);
+    if (!this.state.isLogin)
+      return <Navigate to={"/register"} replace={true} />;
     return <div>Private</div>;
   }
 }
 
-export default withNavigate(Private);
+// export default withNavigate(Private);
+export default Private;
