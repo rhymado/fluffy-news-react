@@ -62,3 +62,7 @@
 .no-underline {
   text-decoration: none;
 }
+
+.modal-open {
+  display: block;
+}

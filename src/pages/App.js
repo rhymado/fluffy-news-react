@@ -13,16 +13,22 @@ class App extends React.Component {
   state = {
     color: "primary",
     name: "",
+    isModalOpen: false,
   };
   componentDidMount() {
     console.log("did mount");
+    if (this.props.location.state && this.props.location.state.msg) {
+      this.setState({
+        isModalOpen: true,
+      });
+    }
   }
   componentDidUpdate(prevProps, prevState) {
     console.log("previous", prevState);
     console.log("now", this.state);
   }
   render() {
-    const { setSearchParams, params } = this.props;
+    const { setSearchParams, params, location } = this.props;
     console.log(params);
     // console.log("name: ", searchParams.get("name"));
     return (
@@ -90,6 +96,48 @@ class App extends React.Component {
             </section>
           </main>
         </div>
+        <section
+          className={`modal ${this.state.isModalOpen && styles["modal-open"]}`}
+          tabIndex="-1"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Modal title</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  onClick={() => {
+                    this.setState({
+                      isModalOpen: false,
+                    });
+                  }}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <h1 style={{ color: "red" }}>
+                  {(location.state && location.state.msg) || ""}
+                </h1>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  onClick={() => {
+                    this.setState({
+                      isModalOpen: false,
+                    });
+                  }}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
       </>
     );
   }

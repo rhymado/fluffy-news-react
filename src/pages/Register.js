@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "../styles/Register.module.css";
 
 import Button from "../components/Button";
+import withNavigate from "../helpers/withNavigate";
 
 import granny from "../assets/img/granny.jpg";
 import fb from "../assets/img/Facebook.png";
@@ -14,8 +15,14 @@ class Register extends Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
-    console.log("login");
-    localStorage.setItem("isLogin", true);
+    const userData = {
+      email: "mail@mail.com",
+      role: "user",
+      token:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    };
+    localStorage.setItem("user-info", JSON.stringify(userData));
+    this.props.navigate("/");
   };
   render() {
     return (
@@ -110,4 +117,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withNavigate(Register);

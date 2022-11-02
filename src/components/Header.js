@@ -7,6 +7,7 @@ function Header({ navigate, onSearchHandler }) {
   const onClickHandler = (to) => {
     navigate(to);
   };
+  const userInfo = JSON.parse(localStorage["user-info"] || "{}");
   return (
     <header className={styles.container}>
       <aside className={styles["header-item"]}>
@@ -47,14 +48,18 @@ function Header({ navigate, onSearchHandler }) {
             }
           }}
         />
-        <div
-          className={styles.clickable}
-          onClick={() => {
-            onClickHandler("/register");
-          }}
-        >
-          Register
-        </div>
+        {userInfo.token ? (
+          <div className={styles.clickable}>Profile</div>
+        ) : (
+          <div
+            className={styles.clickable}
+            onClick={() => {
+              onClickHandler("/register");
+            }}
+          >
+            Register
+          </div>
+        )}
       </aside>
     </header>
   );
