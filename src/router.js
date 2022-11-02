@@ -5,7 +5,6 @@ import Register from "./pages/Register";
 import Error from "./pages/Error";
 import Position from "./pages/Position";
 import Books from "./pages/Books";
-import Private from "./pages/Private";
 
 const router = createBrowserRouter([
   { path: "/", element: <App />, errorElement: <Error /> },
@@ -13,7 +12,6 @@ const router = createBrowserRouter([
   { path: "/register", element: <Register /> },
   { path: "/position", element: <Position /> },
   { path: "/books", element: <Books /> },
-  { path: "/private", element: <Private /> },
 ]);
 
 export default router;
