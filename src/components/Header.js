@@ -37,6 +37,14 @@ function Header({ navigate, onSearchHandler }) {
         >
           Books
         </div>
+        <div
+          className={styles.clickable}
+          onClick={() => {
+            onClickHandler("/counter");
+          }}
+        >
+          Counter
+        </div>
       </nav>
       <aside className={styles["header-item"]}>
         <input

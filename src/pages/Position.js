@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import Header from "../components/Header";
 
 function Position() {
@@ -51,4 +53,10 @@ function Position() {
   );
 }
 
-export default Position;
+const mapStateToProps = (reduxState) => {
+  return {
+    reduxState,
+  };
+};
+
+export default connect(mapStateToProps)(Position);

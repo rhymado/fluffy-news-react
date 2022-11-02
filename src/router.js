@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Error from "./pages/Error";
 import Position from "./pages/Position";
 import Books from "./pages/Books";
+import Counter from "./pages/Counter";
 
 import PrivateElement from "./components/PrivateElement";
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     ),
   },
   { path: "/books", element: <Books /> },
+  { path: "/counter", element: <Counter /> },
 ]);
 
 export default router;

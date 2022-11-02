@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import Axios from "axios";
+// import Axios from "axios";
+import { connect } from "react-redux";
 
 import Header from "../components/Header";
 import styles from "../styles/Books.module.css";
 import withSearchParams from "../helpers/withSearchParams";
 import withLocation from "../helpers/withLocation";
+// import { getBook } from "../https/books";
+import bookActions from "../redux/actions/books";
 
 function Card({ title, author }) {
   return (
@@ -29,7 +32,6 @@ function CardPlaceholder() {
 
 class Books extends Component {
   state = {
-    books: [],
     searchParams: {
       title: "",
       page: 1,
@@ -48,16 +50,16 @@ class Books extends Component {
   };
   componentDidMount() {
     // Axios.method(URL, options): promise
-    this.props.setSearchParams(this.state.searchParams);
+    // this.props.setSearchParams(this.state.searchParams);
     // console.log(this.props.location.search);
-    const url = `${process.env.REACT_APP_BACKEND_HOST}api/v1/books?page=1&limit=10`;
-    Axios.get(url)
-      .then((res) => {
-        this.setState({
-          books: res.data.result,
-        });
-      })
-      .catch((err) => console.log(err));
+    this.props.dispatch(bookActions.getBookAction());
+    // getBook()
+    //   .then((res) => {
+    //     this.setState({
+    //       books: res.data.result,
+    //     });
+    //   })
+    //   .catch((err) => console.log(err));
   }
   componentDidUpdate(prevProps) {
     console.log(
@@ -70,8 +72,9 @@ class Books extends Component {
         <Header onSearchHandler={this.onSearchHandler} />
         <div>
           <main className={styles["main-container"]}>
-            {this.state.books.length > 0
-              ? this.state.books.map((book) => {
+            {this.props.books.isError && this.props.books.err}
+            {!this.props.books.isLoading
+              ? this.props.books.data.map((book) => {
                   return (
                     <Card
                       title={book.title}
@@ -89,5 +92,11 @@ class Books extends Component {
     );
   }
 }
+const mapStateToProps = (reduxState) => {
+  return {
+    counter: reduxState.counter,
+    books: reduxState.books,
+  };
+};
 
-export default withLocation(withSearchParams(Books));
+export default connect(mapStateToProps)(withLocation(withSearchParams(Books)));
