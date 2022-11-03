@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import Axios from "axios";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import Header from "../components/Header";
 import styles from "../styles/Books.module.css";
@@ -53,6 +54,10 @@ class Books extends Component {
     // this.props.setSearchParams(this.state.searchParams);
     // console.log(this.props.location.search);
     this.props.dispatch(bookActions.getBookAction());
+    axios
+      .get("https://juicy-worlds.vercel.app/api/v1/products/1")
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
     // getBook()
     //   .then((res) => {
     //     this.setState({
