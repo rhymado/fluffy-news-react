@@ -6,6 +6,7 @@ import Error from "./pages/Error";
 import Position from "./pages/Position";
 import Books from "./pages/Books";
 import Counter from "./pages/Counter";
+import Hooks from "./pages/Hooks";
 
 import PrivateElement from "./components/PrivateElement";
 
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   },
   { path: "/books", element: <Books /> },
   { path: "/counter", element: <Counter /> },
+  { path: "/hooks", element: <Hooks /> },
 ]);
 
 export default router;
