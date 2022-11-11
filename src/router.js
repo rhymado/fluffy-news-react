@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   },
   { path: "/books", element: <Books /> },
   { path: "/counter", element: <Counter /> },
-  { path: "/hooks", element: <Hooks /> },
+  { path: "/hooks/:id/:status", element: <Hooks /> },
 ]);
 
 export default router;
