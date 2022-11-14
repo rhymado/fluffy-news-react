@@ -38,6 +38,7 @@ class Books extends Component {
       page: 1,
       limit: 10,
     },
+    title: "Loading",
   };
   onSearchHandler = (search) => {
     this.setState(
@@ -49,15 +50,20 @@ class Books extends Component {
       }
     );
   };
+  onGetBookSuccess = () => {
+    this.setState({
+      title: "List Buku",
+    });
+  };
   componentDidMount() {
     // Axios.method(URL, options): promise
     // this.props.setSearchParams(this.state.searchParams);
     // console.log(this.props.location.search);
-    this.props.dispatch(bookActions.getBookAction());
-    axios
-      .get("https://juicy-worlds.vercel.app/api/v1/products/1")
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+    this.props.dispatch(bookActions.getBookThunk(this.onGetBookSuccess));
+    // axios
+    //   .get("https://juicy-worlds.vercel.app/api/v1/products/1")
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => console.log(err));
     // getBook()
     //   .then((res) => {
     //     this.setState({
@@ -75,6 +81,7 @@ class Books extends Component {
     return (
       <>
         <Header onSearchHandler={this.onSearchHandler} />
+        <div>{this.state.title}</div>
         <div>
           <main className={styles["main-container"]}>
             {this.props.books.isError && this.props.books.err}

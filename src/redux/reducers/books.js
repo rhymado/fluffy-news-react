@@ -7,8 +7,8 @@ const initialState = {
   err: null,
 };
 
-const bookReducer = (prevState = initialState, action) => {
-  switch (action.type) {
+const bookReducer = (prevState = initialState, { type, payload }) => {
+  switch (type) {
     case actionStrings.getBooks + actionStrings.pending:
       return {
         ...prevState,
@@ -16,21 +16,21 @@ const bookReducer = (prevState = initialState, action) => {
         isError: false,
       };
     case actionStrings.getBooks + actionStrings.rejected:
-      const errorResponse = action.payload;
-      const errorMessage = errorResponse.data.msg;
+      // const errorResponse = payload;
+      // const errorMessage = errorResponse.data.msg;
       return {
         ...prevState,
         isError: true,
         isLoading: false,
-        err: errorMessage,
+        err: payload.err.message,
       };
     case actionStrings.getBooks + actionStrings.fulfilled:
-      const response = action.payload;
-      const result = response.data.result;
+      // const response = payload;
+      // const result = response.data.result;
       return {
         ...prevState,
         isLoading: false,
-        data: result,
+        data: payload.data.result,
       };
     default:
       return prevState;
