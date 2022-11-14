@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 
 import Header from "../components/Header";
 import styles from "../styles/Counter.module.css";
-import counterActions from "../redux/actions/counter";
+// import counterActions from "../redux/actions/counter";
+import { counterActions } from "../redux/slices/counter";
 
 function Counter({ counter, dispatch }) {
   const onClickHandler = (action) => {

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 // import Axios from "axios";
 import { connect } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 
 import Header from "../components/Header";
 import styles from "../styles/Books.module.css";
 import withSearchParams from "../helpers/withSearchParams";
 import withLocation from "../helpers/withLocation";
 // import { getBook } from "../https/books";
-import bookActions from "../redux/actions/books";
+// import bookActions from "../redux/actions/books";
+import { bookActions } from "../redux/slices/books";
 
 function Card({ title, author }) {
   return (
